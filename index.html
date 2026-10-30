@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>عبود مونتاج الذكي | إنتاج عبود — استوديو المونتاج وصناعة المحتوى بالذكاء الاصطناعي</title>
-<meta name="description" content="تطبيق وموقع عبود مونتاج الذكي (Abood Smart Montage Studio) - إنتاج ومونتاج الفيديوهات بالذكاء الاصطناعي، مراجعة المشاهد والقصة، وإخراج الريلز 9:16 بقيادة عبود حنون. متوافق مع جميع الأجهزة.">
-<meta name="keywords" content="عبود مونتاج الذكي, إنتاج عبود, استوديو عبود, عبود حنون, مونتاج ذكي, إعدادات النهار, ريلز, يوتيوب, Abood Smart Montage, Abood Production, Abood Studio, Abood Hanoon, Smart Video Editor">
+<title>منتجع عبود للمونتاج والإنتاج الذكي | Abood Montage & Creative Studio</title>
+<meta name="description" content="تطبيق وموقع منتجع عبود للمونتاج والإنتاج الذكي (Abood Montage Studio) - استوديو متكامل لصناعة الفيديوهات بالذكاء الاصطناعي، مراجعة المشاهد والستوريبورد، استيراد وتصدير الريلز 9:16 مع بوت المساعد الذكي وإعدادات النهار لجميع الأجهزة.">
+<meta name="keywords" content="منتجع عبود, مونتاج عبود, إنتاج عبود, استوديو عبود, عبود حنون, إعدادات النهار, ريلز 9:16, يوتيوب, تيك توك, Abood Montage, Abood Resort, Abood Studio, Abood Production, Abood Hanoon, Smart Video Editor">
 <meta name="author" content="عبود حنون | Abood Hanoon">
 <meta name="theme-color" content="#0b1d23" id="themeMetaColor">
 
@@ -14,8 +14,8 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "عبود مونتاج الذكي | إنتاج عبود",
-  "alternateName": ["استوديو عبود للمونتاج", "Abood Smart Montage Studio", "Abood Production"],
+  "name": "منتجع عبود للمونتاج والإنتاج الذكي | Abood Montage Studio",
+  "alternateName": ["منتجع عبود", "مونتاج عبود", "إنتاج عبود", "استوديو عبود", "Abood Production"],
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "All (iOS, Android, Windows, macOS, Linux)",
   "creator": {
@@ -27,7 +27,7 @@
     "price": "0",
     "priceCurrency": "USD"
   },
-  "description": "منصة وتطبيق متكامل لصناعة ومراجعة ومونتاج الفيديوهات الذكية والريلز 9:16 مع بوت المساعد الذكي وإعدادات النهار والليل لجميع الأجهزة."
+  "description": "منصة وتطبيق منتجع عبود للمونتاج الذكي، صناعة ريلز 9:16، مراجعة المشاهد والقصة، بوت المساعد الصوتي، وتصدير الفيديوهات مباشرة من المتصفح."
 }
 </script>
 
@@ -260,7 +260,7 @@ main.app-main {
 /* Grid Layouts */
 .studio-grid {
   display: grid;
-  grid-template-columns: 400px 1fr;
+  grid-template-columns: 380px 1fr;
   gap: 20px;
   align-items: start;
 }
@@ -343,10 +343,14 @@ main.app-main {
   cursor: pointer;
 }
 .reel-video-element {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   background: #0b1d23;
+  display: none;
 }
 .reel-overlay-caption {
   position: absolute;
@@ -359,7 +363,7 @@ main.app-main {
 }
 .caption-box {
   display: inline-block;
-  background: rgba(18, 43, 51, 0.92);
+  background: rgba(18, 43, 51, 0.94);
   color: #f5f0e6;
   border: 2px solid var(--accent-gold);
   border-radius: 12px;
@@ -367,7 +371,7 @@ main.app-main {
   font-size: 15px;
   font-weight: 800;
   line-height: 1.5;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
   animation: popIn 0.3s ease;
 }
 @keyframes popIn {
@@ -376,7 +380,7 @@ main.app-main {
 }
 .reel-bottom-controls {
   padding: 12px 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.88), transparent);
   color: #ffffff;
   z-index: 10;
   display: flex;
@@ -385,7 +389,7 @@ main.app-main {
 }
 .reel-time-bar {
   width: 100%;
-  height: 5px;
+  height: 6px;
   background: rgba(255,255,255,0.25);
   border-radius: 4px;
   cursor: pointer;
@@ -394,10 +398,10 @@ main.app-main {
 }
 .reel-time-progress {
   height: 100%;
-  width: 35%;
+  width: 0%;
   background: var(--accent-gold);
   border-radius: 4px;
-  transition: width 0.1s linear;
+  transition: width 0.08s linear;
 }
 .reel-ctrl-row {
   display: flex;
@@ -472,7 +476,7 @@ main.app-main {
 .bot-container {
   display: flex;
   flex-direction: column;
-  height: 620px;
+  height: 560px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
@@ -541,7 +545,7 @@ main.app-main {
   background: var(--bg-surface);
   border-top: 1px solid var(--border-color);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 .bot-input-bar input {
@@ -616,7 +620,23 @@ main.app-main {
   min-width: 260px;
 }
 
-/* Footer Notification Bar */
+/* Recording Status Overlay */
+.recording-indicator {
+  display: none;
+  background: rgba(220, 38, 38, 0.9);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+/* Footer Notification Toast */
 .status-toast {
   position: fixed;
   bottom: 20px;
@@ -655,7 +675,7 @@ main.app-main {
   .brand-title h1 { font-size: 17px; }
   .tab-btn { padding: 10px 12px; font-size: 13px; }
   main.app-main { padding: 14px 10px 80px; }
-  .reel-frame { max-width: 290px; }
+  .reel-frame { max-width: 300px; }
 }
 </style>
 </head>
@@ -668,10 +688,10 @@ main.app-main {
       <div class="brand-logo">ع</div>
       <div class="brand-title">
         <h1>
-          <span>عبود مونتاج الذكي</span>
+          <span>منتجع عبود للمونتاج والإنتاج الذكي</span>
           <span class="device-badge">متوافق مع كل الأجهزة</span>
         </h1>
-        <p>إنتاج عبود · Abood Smart Montage Studio · استوديو المونتاج الاحترافي</p>
+        <p>استوديو عبود حنون · صناعة ريلز 9:16 بالذكاء الاصطناعي ومراجعة المشاهد</p>
       </div>
     </div>
     <div class="header-actions">
@@ -681,7 +701,10 @@ main.app-main {
         <span id="themeLabel">إعدادات النهار</span>
       </button>
 
-      <!-- حالة السيرفر -->
+      <!-- مؤشر التسجيل والتصدير -->
+      <span id="recordingBadge" class="recording-indicator">🔴 يجري تصدير الفيديو...</span>
+
+      <!-- حالة المنصة -->
       <span id="serverBadge" class="btn-pill" style="background: rgba(74, 222, 128, 0.15); color: var(--accent-green); border: 1px solid rgba(74, 222, 128, 0.3);">
         ● شغال أونلاين 24/7
       </span>
@@ -694,7 +717,8 @@ main.app-main {
   <div class="tabs-container">
     <button class="tab-btn active" data-tab="studio">🎬 استوديو المونتاج المباشر (9:16)</button>
     <button class="tab-btn" data-tab="story">📝 مراجعة القصة والمشاهد (Story & Scenes)</button>
-    <button class="tab-btn" data-tab="bot">🤖 بوت المونتاج الذكي (AI Assistant)</button>
+    <button class="tab-btn" data-tab="bot">🤖 بوت منتجع عبود الذكي (AI Bot)</button>
+    <button class="tab-btn" data-tab="upload">📁 استيراد فيديو أو صوت</button>
     <button class="tab-btn" data-tab="settings">⚙️ إعدادات النهار والستايل</button>
   </div>
 </nav>
@@ -713,8 +737,8 @@ main.app-main {
       </select>
     </div>
     <div style="display: flex; gap: 8px;">
-      <button id="newProjectBtn" class="btn btn-pill">+ مشروع جديد</button>
-      <button id="exportReelBtn" class="btn btn-primary btn-pill">⚡ تصدير الريل 9:16</button>
+      <button id="importBtnQuick" class="btn btn-pill">📤 رفع ملف فيديو</button>
+      <button id="exportReelBtn" class="btn btn-primary btn-pill">⚡ تصدير وتحميل الريل 9:16</button>
     </div>
   </div>
 
@@ -727,22 +751,20 @@ main.app-main {
         <div class="reel-frame" id="reelContainer">
           <!-- Top bar -->
           <div class="reel-top-bar">
-            <span>🔴 مباشر 9:16</span>
-            <span class="reel-badge">إنتاج عبود</span>
-            <span id="playerTimer">00:02 / 00:15</span>
+            <span>🔴 ريلز 9:16</span>
+            <span class="reel-badge">منتجع عبود</span>
+            <span id="playerTimer">00:00 / 00:15</span>
           </div>
 
           <!-- Screen Canvas / Video Area -->
           <div class="reel-canvas-area" id="reelScreen">
-            <video id="reelVideo" class="reel-video-element" playsinline loop poster="">
-              <!-- Fallback to styled animated canvas if video source is local -->
-            </video>
+            <video id="reelVideo" class="reel-video-element" playsinline loop muted></video>
             <canvas id="reelCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
             
             <!-- Dynamic Subtitle Overlay -->
             <div class="reel-overlay-caption">
               <div class="caption-box" id="activeCaptionBox">
-                «مرحباً بكم في استوديو عبود لمونتاج الذكاء الاصطناعي»
+                «مرحباً بكم في منتجع عبود لمونتاج الذكاء الاصطناعي»
               </div>
             </div>
           </div>
@@ -754,14 +776,14 @@ main.app-main {
             </div>
             <div class="reel-ctrl-row">
               <button id="playBtn" class="btn-pill" style="padding: 4px 12px;">▶ تشغيل</button>
-              <span id="sceneBadge" style="font-size: 11px; opacity: 0.85;">المشهد 1 · خطاف البداية (Hook)</span>
+              <span id="sceneBadge" style="font-size: 11px; opacity: 0.9;">المشهد 1 · خطاف البداية (Hook)</span>
               <button id="speedBtn" class="btn-pill" style="padding: 4px 10px;">1.0x</button>
             </div>
           </div>
         </div>
 
         <div style="margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
-          <button id="soundToggleBtn" class="btn btn-pill">🔊 الصوت: مفعل</button>
+          <button id="soundToggleBtn" class="btn btn-pill">🔊 صوت الخلفية: مفعل</button>
           <button id="motionRecipeBtn" class="btn btn-pill">✨ الحركة: Source Focus</button>
         </div>
       </div>
@@ -785,13 +807,14 @@ main.app-main {
         <!-- Quick Reel Tools -->
         <div class="card">
           <div class="card-header">
-            <h2><span>⚡</span> أدوات المونتاج السريع</h2>
+            <h2><span>⚡</span> أدوات المونتاج السريع التفاعلية</h2>
           </div>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
             <button id="trimSilenceBtn" class="btn">✂️ قص فترات الصمت التلقائي</button>
             <button id="autoCaptionBtn" class="btn">📝 توليد كابشن متزامن</button>
             <button id="audioEnhanceBtn" class="btn">🎙️ تنقية الصوت (DeepFilter)</button>
             <button id="bRollInsertBtn" class="btn">🖼️ إضافة لقطات مساندة (B-Roll)</button>
+            <button id="toggleLangCaptionBtn" class="btn">🌐 تبديل الكابشن (عربي / English)</button>
           </div>
         </div>
       </div>
@@ -845,11 +868,11 @@ main.app-main {
         <div class="form-row">
           <div class="form-group">
             <label>النص الظاهر على الشاشة بالعربية (Caption RTL)</label>
-            <input type="text" id="editCaptionAr" value="«مرحباً بكم في استوديو عبود لمونتاج الذكاء الاصطناعي»">
+            <input type="text" id="editCaptionAr" value="«مرحباً بكم في منتجع عبود لمونتاج الذكاء الاصطناعي»">
           </div>
           <div class="form-group">
             <label>On-Screen Caption in English (LTR)</label>
-            <input type="text" id="editCaptionEn" dir="ltr" value="Welcome to Abood AI Montage Studio">
+            <input type="text" id="editCaptionEn" dir="ltr" value="Welcome to Abood Montage & Creative Studio">
           </div>
         </div>
 
@@ -864,9 +887,10 @@ main.app-main {
           </div>
         </div>
 
-        <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
           <button id="saveSceneEditBtn" class="btn btn-primary">حفظ تعديل المشهد</button>
           <button id="addNewSceneFullBtn" class="btn">+ مشهد تالي جديد</button>
+          <button id="deleteSceneBtn" class="btn" style="color: var(--accent-red); border-color: rgba(248,113,113,0.3);">🗑️ حذف هذا المشهد</button>
         </div>
       </div>
     </div>
@@ -875,23 +899,23 @@ main.app-main {
   <!-- TAB 3: BOT ASSISTANT (AI MONTAGE BOT) -->
   <section id="tab-bot" class="tab-content" style="display: none;">
     <div class="card" style="padding: 0; overflow: hidden;">
-      <div style="padding: 16px 20px; background: var(--bg-card); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;">
+      <div style="padding: 16px 20px; background: var(--bg-card); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
         <div style="display: flex; align-items: center; gap: 10px;">
           <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--accent-gold); color: #122b33; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px;">🤖</div>
           <div>
-            <h2 style="margin: 0; font-size: 16px;">بوت إنتاج عبود الذكي (Abood AI Assistant)</h2>
-            <small style="color: var(--text-muted);">مساعد المونتاج الفوري — اكتب أي فكرة لتطبيقها على الفيديو</small>
+            <h2 style="margin: 0; font-size: 16px;">بوت منتجع عبود الذكي (Abood AI Assistant)</h2>
+            <small style="color: var(--text-muted);">مساعد المونتاج الذكي الفوري — اكتب أو تحدث بالمايك لتطبيق التعديلات</small>
           </div>
         </div>
         <span class="device-badge">جاهز ويعمل الآن</span>
       </div>
 
-      <div class="bot-container" style="border: 0; height: 500px;">
+      <div class="bot-container" style="border: 0;">
         <div class="bot-messages-area" id="botMessages">
           <div class="bot-msg agent">
-            أهلاً بك يا عبود! أنا بوت المونتاج الذكي الخاص بك.
-            أنا جاهز لمساعدتك في تعديل مشاهد الريل، قص الصمت، تحسين الكابشن، وتطبيق ستايل 9:16 فوراً.
-            اختر أحد الأوامر السريعة أدناه أو اكتب طلبك مباشرة! 👇
+            أهلاً بك في منتجع عبود! أنا بوت المونتاج الذكي الخاص بك.
+            أنا جاهز لمساعدتك في تعديل مشاهد الريل، قص الصمت، تحسين الكابشن، وتصدير الفيديو فوراً.
+            اضغط على زر المايك 🎙️ للتحدث مباشرة، أو اختر أحد الأوامر السريعة أدناه! 👇
           </div>
         </div>
 
@@ -900,12 +924,13 @@ main.app-main {
           <button class="chip-btn" data-prompt="أضف عنواناً باللون الذهبي في البداية">✨ عنوان ذهبي في البداية</button>
           <button class="chip-btn" data-prompt="قص فترات الصمت التلقائي في الفيديو">✂️ قص الصمت تلقائياً</button>
           <button class="chip-btn" data-prompt="ترجم جميع الكابشن إلى الإنجليزية">🌍 ترجمة للإنجليزي</button>
-          <button class="chip-btn" data-prompt="اجعل الكابشن كلمة بكلمة سريع">⚡ كابشن كلمة بكلمة</button>
-          <button class="chip-btn" data-prompt="حوّل المشهد الأخير لدعوة متابعة CTA">📢 إضافة CTA بالخاتمة</button>
+          <button class="chip-btn" data-prompt="فعّل إعدادات النهار">☀️ تفعيل إعدادات النهار</button>
+          <button class="chip-btn" data-prompt="صدّر لي فيديو الريل الآن">⚡ تصدير وتحميل الفيديو</button>
         </div>
 
-        <!-- Input Bar -->
+        <!-- Input Bar with Voice Mic -->
         <div class="bot-input-bar">
+          <button id="voiceMicBtn" class="btn btn-pill" title="تسجيل صوتي وتحدث للبوت" style="padding: 10px 14px;">🎙️</button>
           <input type="text" id="botInput" placeholder="اكتب طلب المونتاج أو الفكرة بالعربي أو الإنجليزي...">
           <button id="botSendBtn" class="btn btn-primary" style="padding: 10px 18px;">إرسال 🚀</button>
         </div>
@@ -913,7 +938,31 @@ main.app-main {
     </div>
   </section>
 
-  <!-- TAB 4: SETTINGS (إعدادات النهار والستايل) -->
+  <!-- TAB 4: UPLOAD & IMPORT ASSETS -->
+  <section id="tab-upload" class="tab-content" style="display: none;">
+    <div class="card">
+      <div class="card-header">
+        <h2><span>📁</span> استيراد أصول وفيديوهات جديدة</h2>
+      </div>
+      <p style="color: var(--text-muted);">
+        يمكنك استيراد أي فيديو من هاتفك أو جهازك (MP4 / MOV / WebM) أو ملف صوتي (WAV / MP3) لتشغيله ومراجعته في مشغل 9:16 فوراً:
+      </p>
+
+      <div style="border: 2px dashed var(--accent-gold); border-radius: var(--radius-md); padding: 36px 20px; text-align: center; background: var(--bg-card); cursor: pointer;" id="dropZoneArea">
+        <div style="font-size: 38px; margin-bottom: 10px;">📹</div>
+        <h3 style="margin: 0 0 8px; font-size: 17px;">اختر أو اسحب فيديو هنا للتشغيل المباشر</h3>
+        <p style="color: var(--text-muted); font-size: 13.5px; margin: 0 0 16px;">يدعم جميع صيغ الهواتف والكاميرات الشائعة</p>
+        <input type="file" id="videoFileInput" accept="video/*,audio/*" style="display: none;">
+        <button id="pickFileBtn" class="btn btn-primary btn-pill">استعراض الملفات من الجهاز</button>
+      </div>
+
+      <div id="fileUploadInfo" style="display: none; margin-top: 16px; padding: 12px 16px; background: rgba(74, 222, 128, 0.12); border: 1px solid rgba(74, 222, 128, 0.3); border-radius: 8px;">
+        <strong style="color: var(--accent-green);">✓ تم تحميل الملف بنجاح:</strong> <span id="fileNameLabel"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 5: SETTINGS (إعدادات النهار والستايل) -->
   <section id="tab-settings" class="tab-content" style="display: none;">
     <div class="card">
       <div class="card-header">
@@ -981,7 +1030,7 @@ main.app-main {
 
 <script>
 /* ==========================================================================
-   Abood Smart Montage (إنتاج عبود) — Core Application Logic
+   منتجع عبود للمونتاج والإنتاج الذكي — Core Application Logic
    ========================================================================== */
 
 // --- 1. State & Initial Data ---
@@ -993,8 +1042,8 @@ const DEFAULT_SCENES = [
     endSeconds: 3.5,
     titleAr: "خطاف البداية — جذب الانتباه",
     titleEn: "Opening Hook",
-    captionAr: "«مرحباً بكم في استوديو عبود لمونتاج الذكاء الاصطناعي»",
-    captionEn: "Welcome to Abood AI Montage Studio",
+    captionAr: "«مرحباً بكم في منتجع عبود لمونتاج الذكاء الاصطناعي»",
+    captionEn: "Welcome to Abood Montage & Creative Studio",
     visual: "تركيز على المتحدث مع حركة دخول ناعمة للكادر",
     recipe: "source-focus"
   },
@@ -1027,10 +1076,10 @@ const DEFAULT_SCENES = [
     purpose: "cta",
     startSeconds: 12.0,
     endSeconds: 15.0,
-    titleAr: "الخاتمة والدعوة — إنتاج عبود",
+    titleAr: "الخاتمة والدعوة — منتجع عبود",
     titleEn: "Call To Action",
-    captionAr: "«تابع إنتاج عبود للمزيد من أسرار صناعة المحتوى الذكي»",
-    captionEn: "Follow Abood Production for more smart content secrets",
+    captionAr: "«تابع منتجع عبود للمزيد من أسرار صناعة المحتوى الذكي»",
+    captionEn: "Follow Abood Montage Studio for more smart content secrets",
     visual: "شعار عبود الذهبي مع انتقال خاطف Whip Pan",
     recipe: "statement"
   }
@@ -1048,7 +1097,9 @@ let appState = {
   isPlaying: false,
   playbackSpeed: 1.0,
   soundEnabled: true,
-  currentSceneIndex: 0
+  currentSceneIndex: 0,
+  captionLanguage: 'ar',
+  userVideoUrl: null
 };
 
 const $ = id => document.getElementById(id);
@@ -1102,10 +1153,14 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     if ($(target)) $(target).style.display = 'block';
   };
 });
+$('importBtnQuick').onclick = () => {
+  document.querySelector('[data-tab="upload"]').click();
+};
 
 // --- 5. Interactive 9:16 Canvas & Reel Player ---
 const canvas = $('reelCanvas');
 const ctx = canvas.getContext('2d');
+const videoEl = $('reelVideo');
 
 function resizeCanvas() {
   const rect = canvas.getBoundingClientRect();
@@ -1117,7 +1172,6 @@ window.addEventListener('resize', resizeCanvas);
 setTimeout(resizeCanvas, 100);
 
 // Procedural Reel Animator
-let animationFrameId = null;
 function drawReelFrame() {
   const w = canvas.clientWidth;
   const h = canvas.clientHeight;
@@ -1125,52 +1179,59 @@ function drawReelFrame() {
 
   ctx.clearRect(0, 0, w, h);
 
-  // Background Studio Aesthetic
-  const grad = ctx.createLinearGradient(0, 0, w, h);
-  if (appState.theme === 'day') {
-    grad.addColorStop(0, '#e2e8f0');
-    grad.addColorStop(0.5, '#cbd5e1');
-    grad.addColorStop(1, '#94a3b8');
+  if (appState.userVideoUrl && !videoEl.paused) {
+    // If user loaded an actual video file, draw video frame
+    try {
+      ctx.drawImage(videoEl, 0, 0, w, h);
+    } catch(e) {}
   } else {
-    grad.addColorStop(0, '#0b1d23');
-    grad.addColorStop(0.5, '#142e37');
-    grad.addColorStop(1, '#051115');
+    // Background Studio Aesthetic
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    if (appState.theme === 'day') {
+      grad.addColorStop(0, '#f8fafc');
+      grad.addColorStop(0.5, '#e2e8f0');
+      grad.addColorStop(1, '#cbd5e1');
+    } else {
+      grad.addColorStop(0, '#0b1d23');
+      grad.addColorStop(0.5, '#142e37');
+      grad.addColorStop(1, '#051115');
+    }
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Grid Lines
+    ctx.strokeStyle = appState.theme === 'day' ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < w; x += 30) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+
+    // Animated Audio Waveform in Center
+    const activeScene = appState.scenes[appState.currentSceneIndex] || appState.scenes[0];
+    const waveColor = appState.theme === 'day' ? '#d97706' : '#f5b94c';
+    ctx.fillStyle = waveColor;
+
+    const barCount = 18;
+    const barWidth = 6;
+    const startX = (w - (barCount * 12)) / 2;
+    const centerY = h * 0.44;
+
+    for (let i = 0; i < barCount; i++) {
+      const timeFactor = appState.isPlaying ? Math.sin((Date.now() / 150) + i) : Math.sin(i * 0.8);
+      const barHeight = Math.max(12, Math.abs(timeFactor) * 55);
+      ctx.fillRect(startX + (i * 12), centerY - (barHeight / 2), barWidth, barHeight);
+    }
+
+    // Speaker Badge in Center
+    ctx.fillStyle = appState.theme === 'day' ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.95)';
+    ctx.font = 'bold 15px ' + appState.font;
+    ctx.textAlign = 'center';
+    ctx.fillText('منتجع عبود · استوديو المونتاج 9:16', w / 2, centerY + 58);
+
+    ctx.fillStyle = appState.theme === 'day' ? '#475569' : '#94a3b8';
+    ctx.font = '12px ' + appState.font;
+    ctx.fillText(activeScene.visual, w / 2, centerY + 80);
   }
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, w, h);
-
-  // Subtle Video Grid Lines
-  ctx.strokeStyle = appState.theme === 'day' ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
-  ctx.lineWidth = 1;
-  for (let x = 0; x < w; x += 30) {
-    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-  }
-
-  // Animated Audio Waveform in Center
-  const activeScene = appState.scenes[appState.currentSceneIndex] || appState.scenes[0];
-  const waveColor = appState.theme === 'day' ? '#d97706' : '#f5b94c';
-  ctx.fillStyle = waveColor;
-
-  const barCount = 18;
-  const barWidth = 6;
-  const startX = (w - (barCount * 12)) / 2;
-  const centerY = h * 0.44;
-
-  for (let i = 0; i < barCount; i++) {
-    const timeFactor = appState.isPlaying ? Math.sin((Date.now() / 150) + i) : Math.sin(i * 0.8);
-    const barHeight = Math.max(12, Math.abs(timeFactor) * 55);
-    ctx.fillRect(startX + (i * 12), centerY - (barHeight / 2), barWidth, barHeight);
-  }
-
-  // Speaker Badge in Center
-  ctx.fillStyle = appState.theme === 'day' ? 'rgba(0,0,0,0.75)' : 'rgba(255,255,255,0.9)';
-  ctx.font = 'bold 15px ' + appState.font;
-  ctx.textAlign = 'center';
-  ctx.fillText('إنتاج عبود · متحدث ذكي 9:16', w / 2, centerY + 58);
-
-  ctx.fillStyle = appState.theme === 'day' ? '#475569' : '#94a3b8';
-  ctx.font = '12px ' + appState.font;
-  ctx.fillText(activeScene.visual, w / 2, centerY + 80);
 }
 
 // Time update loop
@@ -1181,6 +1242,7 @@ function updatePlayback(now) {
     appState.currentTime += delta * appState.playbackSpeed;
     if (appState.currentTime >= appState.duration) {
       appState.currentTime = 0;
+      if (appState.userVideoUrl) videoEl.currentTime = 0;
     }
 
     // Sync active scene
@@ -1205,13 +1267,17 @@ function updatePlayback(now) {
   }
   lastTick = now;
   drawReelFrame();
-  animationFrameId = requestAnimationFrame(updatePlayback);
+  requestAnimationFrame(updatePlayback);
 }
-animationFrameId = requestAnimationFrame(updatePlayback);
+requestAnimationFrame(updatePlayback);
 
 function togglePlay() {
   appState.isPlaying = !appState.isPlaying;
   $('playBtn').textContent = appState.isPlaying ? '❚❚ إيقاف' : '▶ تشغيل';
+  if (appState.userVideoUrl) {
+    if (appState.isPlaying) videoEl.play().catch(()=>{});
+    else videoEl.pause();
+  }
 }
 
 $('playBtn').onclick = togglePlay;
@@ -1223,6 +1289,7 @@ $('timeScrubber').onclick = (e) => {
   const clickX = e.clientX - rect.left;
   const ratio = Math.max(0, Math.min(1, clickX / rect.width));
   appState.currentTime = ratio * appState.duration;
+  if (appState.userVideoUrl) videoEl.currentTime = appState.currentTime;
   const pct = ratio * 100;
   $('timeProgress').style.width = pct + '%';
   drawReelFrame();
@@ -1235,7 +1302,15 @@ $('speedBtn').onclick = () => {
   speedIdx = (speedIdx + 1) % speeds.length;
   appState.playbackSpeed = speeds[speedIdx];
   $('speedBtn').textContent = appState.playbackSpeed + 'x';
+  if (appState.userVideoUrl) videoEl.playbackRate = appState.playbackSpeed;
   showToast('سرعة التشغيل: ' + appState.playbackSpeed + 'x');
+};
+
+// Toggle Caption Language
+$('toggleLangCaptionBtn').onclick = () => {
+  appState.captionLanguage = appState.captionLanguage === 'ar' ? 'en' : 'ar';
+  updateActiveSceneUI();
+  showToast('تم تحويل لغة الكابشن إلى: ' + (appState.captionLanguage === 'ar' ? 'العربية' : 'English'));
 };
 
 // --- 6. Scenes Rendering & Interaction ---
@@ -1267,7 +1342,7 @@ function renderScenesList() {
 
 function updateActiveSceneUI() {
   const scene = appState.scenes[appState.currentSceneIndex] || appState.scenes[0];
-  $('activeCaptionBox').textContent = scene.captionAr;
+  $('activeCaptionBox').textContent = appState.captionLanguage === 'en' ? scene.captionEn : scene.captionAr;
   $('sceneBadge').textContent = `المشهد ${appState.currentSceneIndex + 1} · ${scene.titleAr}`;
 
   document.querySelectorAll('.scene-card').forEach((c, i) => {
@@ -1287,6 +1362,7 @@ function jumpToScene(idx) {
   appState.currentSceneIndex = idx;
   const scene = appState.scenes[idx];
   appState.currentTime = scene.startSeconds;
+  if (appState.userVideoUrl) videoEl.currentTime = scene.startSeconds;
   updateActiveSceneUI();
   drawReelFrame();
   showToast(`الانتقال إلى المشهد ${idx + 1}: ${scene.titleAr}`);
@@ -1306,6 +1382,20 @@ $('saveSceneEditBtn').onclick = () => {
   showToast('تم حفظ تعديلات المشهد بنجاح ✓');
 };
 
+// Delete Active Scene
+$('deleteSceneBtn').onclick = () => {
+  if (appState.scenes.length <= 1) {
+    showToast('يجب إبقاء مشهد واحد على الأقل في المشروع.');
+    return;
+  }
+  appState.scenes.splice(appState.currentSceneIndex, 1);
+  appState.currentSceneIndex = Math.max(0, appState.currentSceneIndex - 1);
+  localStorage.setItem('abood_scenes', JSON.stringify(appState.scenes));
+  renderScenesList();
+  updateActiveSceneUI();
+  showToast('تم حذف المشهد وتحديث التايملين ✓');
+};
+
 // Add Scene Quick
 function addNewScene() {
   const last = appState.scenes[appState.scenes.length - 1];
@@ -1320,8 +1410,8 @@ function addNewScene() {
     endSeconds: newEnd,
     titleAr: "مشهد جديد " + newIdx,
     titleEn: "New Scene " + newIdx,
-    captionAr: "«فكرة جديدة أضيفت لمونتاج إنتاج عبود»",
-    captionEn: "New scene added to Abood Production montage",
+    captionAr: "«فكرة جديدة أضيفت لمونتاج منتجع عبود»",
+    captionEn: "New scene added to Abood Montage Studio",
     visual: "تركيز على المحتوى الجديد",
     recipe: "statement"
   };
@@ -1370,7 +1460,36 @@ $('seed5ScenesBtn').onclick = () => {
   showToast('تم بناء قالب 5 مشاهد لعينة دايفيد');
 };
 
-// --- 7. Smart Montage Bot (بوت إنتاج عبود) ---
+// --- 7. Real File Uploader ---
+const fileInput = $('videoFileInput');
+$('pickFileBtn').onclick = () => fileInput.click();
+$('dropZoneArea').onclick = (e) => {
+  if (e.target !== $('pickFileBtn')) fileInput.click();
+};
+
+fileInput.onchange = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const objectUrl = URL.createObjectURL(file);
+  appState.userVideoUrl = objectUrl;
+  videoEl.src = objectUrl;
+  videoEl.style.display = 'block';
+
+  $('fileNameLabel').textContent = `${file.name} (${(file.size / (1024*1024)).toFixed(1)} MB)`;
+  $('fileUploadInfo').style.display = 'block';
+
+  videoEl.onloadedmetadata = () => {
+    appState.duration = Math.max(5, videoEl.duration);
+    showToast(`تم تحميل الفيديو بنجاح! المدة: ${videoEl.duration.toFixed(1)} ثانية`);
+    document.querySelector('[data-tab="studio"]').click();
+    appState.isPlaying = true;
+    $('playBtn').textContent = '❚❚ إيقاف';
+    videoEl.play().catch(()=>{});
+  };
+};
+
+// --- 8. Smart Montage Bot & Voice Mic ---
 function appendBotMsg(text, sender = 'agent') {
   const msg = document.createElement('div');
   msg.className = 'bot-msg ' + sender;
@@ -1389,21 +1508,27 @@ function processBotCommand(input) {
   setTimeout(() => {
     let reply = "";
     if (text.includes("ذهب") || text.includes("عنوان")) {
-      appState.scenes[0].captionAr = "«إنتاج عبود: المونتاج الذكي الأسرع والأدق»";
+      appState.scenes[0].captionAr = "«منتجع عبود: المونتاج الذكي الأسرع والأدق»";
       renderScenesList();
       updateActiveSceneUI();
       reply = "أبشر يا عبود! تم تطبيق العنوان الذهبي بالبداية وتحديث المشهد الأول فوراً.";
     } else if (text.includes("صمت") || text.includes("قص")) {
       reply = "تم فحص التسجيل وقص 1.8 ثانية من فترات الصمت غير الضرورية، التايملين الآن مشدود وسريع!";
     } else if (text.includes("ترجم") || text.includes("إنجليز")) {
-      reply = "تمت مراجعة وترجمة الكابشن بالكامل إلى الإنجليزية بجودة عالية متناسقة مع التوقيت.";
-    } else if (text.includes("CTA") || text.includes("خاتم")) {
-      appState.scenes[appState.scenes.length - 1].captionAr = "«اشترك الآن وتابع إنتاج عبود لأفضل فيديوهات الريلز»";
-      renderScenesList();
+      appState.captionLanguage = 'en';
       updateActiveSceneUI();
-      reply = "تم تحديث المشهد الأخير بدعوة تفاعل قوية وجذابة (CTA)!";
+      reply = "تم تحويل الكابشن إلى الإنجليزية بنجاح، وستشاهده الآن على الفيديو!";
+    } else if (text.includes("نهار") || text.includes("ضوء")) {
+      applyTheme('day');
+      reply = "تم تفعيل إعدادات النهار ☀️ الآن لتناسب الإضاءة النهارية!";
+    } else if (text.includes("ليل") || text.includes("ظلام")) {
+      applyTheme('night');
+      reply = "تم تفعيل وضع الليل السينمائي 🌙!";
+    } else if (text.includes("تصدير") || text.includes("صدّر") || text.includes("تحميل")) {
+      startReelExport();
+      reply = "بدأت الآن في تسجيل وتصدير الريل 9:16 بجودة عالية، سيتم تحميل الملف لجهازك فوراً!";
     } else {
-      reply = `أمرك يا فنان! تم استلام طلبك: «${text}»، وجرى تحديث خطة المونتاج للمشروع النشط.`;
+      reply = `أمرك يا فنان! تم استلام طلبك: «${text}»، وجرى تحديث خطة المونتاج في منتجع عبود.`;
     }
     appendBotMsg(reply, 'agent');
     showToast('قام البوت بتحديث خطة المونتاج ✓');
@@ -1421,24 +1546,97 @@ document.querySelectorAll('.chip-btn').forEach(btn => {
   };
 });
 
-// Quick Action Buttons
-$('trimSilenceBtn').onclick = () => {
-  showToast('✂️ جرى قص فترات الصمت وتسريع التايملين محلياً');
-};
-$('autoCaptionBtn').onclick = () => {
-  showToast('📝 تم توليد الكابشن وضبط توقيت الكلمات بدقة');
-};
-$('audioEnhanceBtn').onclick = () => {
-  showToast('🎙️ تم تفعيل مرشح DeepFilter وتنقية صوت المتحدث');
-};
-$('bRollInsertBtn').onclick = () => {
-  showToast('🖼️ تم إدراج لقطات B-Roll مساندة للمشاهد');
-};
-$('exportReelBtn').onclick = () => {
-  showToast('⚡ يجري تجهيز وتصدير الريل 9:16 بجودة عالية...');
-};
+// Voice Recognition via Web Speech API
+const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SpeechRec) {
+  const recognition = new SpeechRec();
+  recognition.lang = 'ar-SA';
+  recognition.continuous = false;
+  recognition.interimResults = false;
 
-// --- 8. Settings Tab Handlers ---
+  recognition.onstart = () => {
+    $('voiceMicBtn').style.background = 'var(--accent-red)';
+    $('voiceMicBtn').textContent = '🔴 اسمعك...';
+    showToast('تحدث الآن، البوت يستمع لصوتك...');
+  };
+
+  recognition.onresult = (event) => {
+    const spoken = event.results[0][0].transcript;
+    $('voiceMicBtn').style.background = '';
+    $('voiceMicBtn').textContent = '🎙️';
+    processBotCommand(spoken);
+  };
+
+  recognition.onerror = () => {
+    $('voiceMicBtn').style.background = '';
+    $('voiceMicBtn').textContent = '🎙️';
+    showToast('تعذر التقاط الصوت، يمكنك الكتابة في المربع.');
+  };
+
+  recognition.onend = () => {
+    $('voiceMicBtn').style.background = '';
+    $('voiceMicBtn').textContent = '🎙️';
+  };
+
+  $('voiceMicBtn').onclick = () => {
+    try { recognition.start(); } catch(e){}
+  };
+} else {
+  $('voiceMicBtn').onclick = () => {
+    showToast('التسجيل الصوتي متاح في متصفحات كروم وسفاري.');
+  };
+}
+
+// --- 9. Real Reel Video Export Engine (MediaRecorder) ---
+function startReelExport() {
+  if (!window.MediaRecorder) {
+    showToast('التصدير المباشر غير مدعوم في هذا المتصفح القديم.');
+    return;
+  }
+
+  $('recordingBadge').style.display = 'inline-block';
+  showToast('🎬 يجري تصدير الريل 9:16 لمدة 5 ثوانٍ...');
+
+  const stream = canvas.captureStream(30);
+  let recordedChunks = [];
+  const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+
+  recorder.ondataavailable = (e) => {
+    if (e.data && e.data.size > 0) recordedChunks.push(e.data);
+  };
+
+  recorder.onstop = () => {
+    $('recordingBadge').style.display = 'none';
+    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Abood-Montage-Reel-9x16-${Date.now()}.webm`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast('⚡ تم تصدير وتحميل فيديو الريل 9:16 بنجاح! ✓');
+  };
+
+  // Start playing from beginning and record 5 seconds of the active montage
+  appState.currentTime = 0;
+  appState.isPlaying = true;
+  recorder.start();
+
+  setTimeout(() => {
+    recorder.stop();
+  }, 5000);
+}
+
+$('exportReelBtn').onclick = startReelExport;
+
+// Quick Action Buttons
+$('trimSilenceBtn').onclick = () => showToast('✂️ جرى قص فترات الصمت وتسريع التايملين محلياً');
+$('autoCaptionBtn').onclick = () => showToast('📝 تم توليد الكابشن وضبط توقيت الكلمات بدقة');
+$('audioEnhanceBtn').onclick = () => showToast('🎙️ تم تفعيل مرشح DeepFilter وتنقية صوت المتحدث');
+$('bRollInsertBtn').onclick = () => showToast('🖼️ تم إدراج لقطات B-Roll مساندة للمشاهد');
+
+// --- 10. Settings Tab Handlers ---
 $('saveSettingsBtn').onclick = () => {
   const selectedTheme = $('settingThemeSelect').value;
   applyTheme(selectedTheme);
