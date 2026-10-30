@@ -1,0 +1,4 @@
+# Abood Studio Robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://abood-studio.pages.dev/sitemap.xml
