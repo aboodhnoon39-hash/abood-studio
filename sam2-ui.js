@@ -1,0 +1,12 @@
+(()=>{
+ const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e;};
+ const card=node('section');card.className='card';card.id='sam2Probe';const run=node('button','جرّب SAM2 على 12 إطارًا صناعيًا'),load=node('button','اعرض آخر تجربة متحقَّق منها'),status=node('p','تجربة اختيارية على المعالج، بحد أقصى ثلاث دقائق. لا تستخدم تسجيلك.'),preview=node('div');status.setAttribute('role','status');
+ card.append(node('h2','تتبّع جسم — تجربة SAM2 محدودة'),node('p','مثال صناعي فقط؛ مش عزل شخص حقيقي أو أداة جاهزة لفيديو كامل. صور الأقنعة ممكن تشمل جزءًا من ظل الجسم.'),run,load,status,preview);$('stage1RealReview').before(card);
+ let sequence=0;
+ async function show(fresh){const ticket=++sequence;run.disabled=true;load.disabled=true;status.textContent=fresh?'جارٍ تشغيل تجربة المعالج… 12 إطارًا فقط، من غير لمس الفيديو الأصلي.':'جارٍ التحقق من ملفات آخر تجربة…';
+  try{const result=await api(fresh?'/api/tools/sam2/probe':'/api/tools/sam2/result',fresh?{}:undefined);if(ticket!==sequence)return;if(result.syntheticOnly!==true||result.ownerContentUsed!==false||result.executionAllowed!==false||result.experimental!==true||result.device!=='cpu'||result.frameCount!==12||!Number.isFinite(result.minIoU)||!result.revision)throw Error('Invalid synthetic SAM2 result.');
+   const video=node('video');video.controls=true;video.preload='metadata';video.style.width='100%';video.setAttribute('aria-label','معاينة الجسم الصناعي وقناع SAM2 والمرجع');video.src='/api/tools/sam2/file?'+new URLSearchParams({revision:result.revision,kind:'video'});const picture=node('img');picture.alt='المصدر ثم قناع SAM2 ثم المرجع الصناعي؛ أول ووسط وآخر إطار';picture.style.width='100%';picture.src='/api/tools/sam2/file?'+new URLSearchParams({revision:result.revision,kind:'contact'});preview.replaceChildren(node('p','زمن المعالجة: '+Math.round(result.elapsedSeconds)+' ثانية · أقل تطابق مع المرجع الصناعي: '+(result.minIoU*100).toFixed(1)+'٪. النتيجة غير معتمدة للإنتاج.'),video,picture);status.textContent=result.qualityPassed?'التجربة الصناعية اجتازت الفحص المحدود. عزل الأشخاص والفيديو الكامل لسه غير متحقَّق منه.':'المحرك اشتغل، لكن دقة الأقنعة لم تجتز فحص التجربة؛ لا تعتبر النتيجة جاهزة.';
+  }catch{if(ticket===sequence)status.textContent='لم تكتمل التجربة أو تغيّرت ملفاتها. راجع الأداة؛ لا نتيجة إنتاجية معتمدة.';}finally{if(ticket===sequence){run.disabled=false;load.disabled=false;}}
+ }
+ run.onclick=()=>show(true);load.onclick=()=>show(false);
+})();

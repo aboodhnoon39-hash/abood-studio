@@ -1,0 +1,36 @@
+(()=>{
+ const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e;};
+ const card=node('section');card.id='localMontageTools';card.className='card';card.append(node('h2','أدوات المونتاج المحلية'),node('p','تحليل فواصل الصوت ومشهد متحرك مستقل. النتائج للمراجعة؛ لا قص أو اعتماد أو تغيير للتسجيل من هنا.'));
+ const analyze=node('button','حلّل فواصل الصوت بـ Auto-Editor'),demo=node('button','جرّب مشهد HyperFrames المحلي'),attach=node('button','افتح مشهد الحركة كطبقة في مسودة مستقلة'),cuts=node('button','عاين اقتراحات القص في مسودة مستقلة'),status=node('p','اختر مشروعًا لتحليل فواصله، أو جرّب المشهد المستقل.'),results=node('div'),preview=node('div');const motionDemo=node('button','جرّب مشهد Motion Canvas المحلي'),motionAttach=node('button','افتح طبقة Motion Canvas في مسودة مستقلة');cuts.disabled=true;status.setAttribute('role','status');card.append(analyze,demo,attach,cuts,motionDemo,motionAttach,status,results,preview);$('stage1RealReview').before(card);
+ let previewSequence=0;
+ let sequence=0,projectID=null,projectVersion=null,proposalID=null;
+ analyze.onclick=async()=>{
+  if(!selected){status.textContent='اختر المشروع أولًا.';return;}
+  const id=selected.id,version=transcriptReqSeq,ticket=++sequence;results.replaceChildren();cuts.disabled=true;proposalID=null;analyze.disabled=true;status.textContent='جارٍ تحليل الصوت محليًا وحماية الكلمات والنهاية…';
+  try{const value=await api('/api/tools/auto-editor/proposals',{id});if(ticket!==sequence)return;if(selected?.id!==id||transcriptReqSeq!==version){status.textContent='اتغيّر المشروع أو التفريغ؛ حلّل النسخة الحالية من جديد.';return;}projectID=id;projectVersion=version;proposalID=value.proposedSilences.length?value.output?.split('/').at(-2):null;cuts.disabled=!proposalID;status.textContent='اكتمل التحليل: '+value.proposedSilences.length+' فاصل مقترح، و'+value.discardedSilences.length+' فاصل مستبعد لحماية الكلمات أو النهاية. لم يتغيّر الفيديو.';results.append(node('p',value.wordGuardSource==='approved'?'حماية الكلمات مبنية على تفريغ معتمد سابقًا؛ اقتراح القص يحتاج مراجعة مستقلة.':'حماية الكلمات مبنية على مسودة تفريغ غير معتمدة؛ لا تعتبر النتيجة اعتمادًا للكلام أو القص.'));for(const interval of value.proposedSilences)results.append(node('p',interval.startSeconds.toFixed(2)+'–'+interval.endSeconds.toFixed(2)+' ثانية · اقتراح للمراجعة فقط'));if(!value.proposedSilences.length)results.append(node('p','لا توجد فواصل تمرّ بحماية الكلمات والنهاية في هذا التحليل.'));
+  }catch{if(ticket===sequence)status.textContent='تعذّر التحليل. افتح التفريغ الحالي وتأكد من سلامة المصدر والتوقيت قبل إعادة المحاولة.';}finally{if(ticket===sequence)analyze.disabled=false;}
+ };
+ cuts.onclick=async()=>{
+  if(!selected||selected.id!==projectID||transcriptReqSeq!==projectVersion||!proposalID){status.textContent='حلّل المشروع الحالي أولًا؛ لا توجد اقتراحات قص جاهزة للمعاينة.';return;}
+  if($('transcriptResult')?.dataset?.textDirty==='true'||$('transcriptResult')?.dataset?.timingDirty==='true'||$('captionTranslation')?.dataset?.translationDirty==='true'){status.textContent='احفظ تعديلات النص أو التوقيت أو الترجمة قبل تجهيز معاينة القص.';return;}
+  const ticket=++previewSequence,id=projectID,version=projectVersion,proposal=proposalID;cuts.disabled=true;status.textContent='جارٍ تجهيز معاينة القص في مسودة مستقلة؛ لا تغيير للأصل…';
+  try{const result=await api('/api/tools/auto-editor/draft',{id,proposalID:proposal});if(ticket!==previewSequence)return;if(selected?.id!==id||transcriptReqSeq!==version)return;const link=node('a','افتح محرر معاينة القص المستقلة');link.href=result.url;link.target='_blank';link.rel='noopener';preview.replaceChildren(node('p','اقتراحات القص في نسخة مراجعة قابلة للتعديل. الأصل محفوظ؛ لا اعتماد نهائي للقص أو الكلام.'),link);status.textContent='معاينة القص المستقلة جاهزة؛ افتحها وراجعها قبل أي اعتماد.';}catch{if(ticket===previewSequence)status.textContent='تعذّر تجهيز معاينة القص؛ احفظ التعديلات وراجع أن المسودة الأصلية بلا قص أو طبقات زمنية، ثم أعد التحليل.';}finally{cuts.disabled=selected?.id!==projectID||transcriptReqSeq!==projectVersion||!proposalID;}
+ };
+ attach.onclick=()=>attachMotion('hyperframes',attach);
+ motionAttach.onclick=()=>attachMotion('motion-canvas',motionAttach);
+ async function attachMotion(tool,control){
+  if(!selected){status.textContent='اختر المشروع أولًا.';return;}
+  if($('transcriptResult')?.dataset?.textDirty==='true'||$('transcriptResult')?.dataset?.timingDirty==='true'||$('captionTranslation')?.dataset?.translationDirty==='true'){status.textContent='احفظ تعديلات النص أو التوقيت أو الترجمة قبل تجهيز المسودة المستقلة.';return;}
+  const ticket=++previewSequence,id=selected.id,version=transcriptReqSeq;control.disabled=true;status.textContent='جارٍ تجهيز طبقة الحركة في نسخة مستقلة؛ الأصل محفوظ…';
+  try{const current=await api('/api/tools/'+tool+'/timeline-preview?id='+encodeURIComponent(id));if(ticket!==previewSequence)return;if(selected?.id!==id||transcriptReqSeq!==version)return;const result=await api('/api/tools/'+tool+'/timeline',{id,expectedManifestSHA256:current.expectedManifestSHA256,expectedDemoSHA256:current.expectedDemoSHA256});if(ticket!==previewSequence)return;if(selected?.id!==id||transcriptReqSeq!==version)return;const link=node('a','افتح محرر مسودة الحركة المستقلة');link.href=result.url;link.target='_blank';link.rel='noopener';preview.replaceChildren(node('p','مشهد اختبار صناعي كطبقة صامتة لمدة ثانيتين. التسجيل والمشروع الأساسي محفوظان؛ المسودة تحتاج مراجعة.'),link);status.textContent='مسودة الحركة جاهزة للتحرير من الرابط. لم تُعتمد للنشر.';
+  }catch{if(ticket===previewSequence)status.textContent='تعذّر تجهيز طبقة الحركة؛ شغّل تجربة محرك الحركة أولًا وتأكد من المصدر الحالي.';}finally{control.disabled=false;}
+ };
+ demo.onclick=()=>renderDemo('hyperframes',demo);
+ motionDemo.onclick=()=>renderDemo('motion-canvas',motionDemo);
+ async function renderDemo(tool,control){
+  const ticket=++previewSequence;control.disabled=true;preview.replaceChildren();status.textContent='جارٍ إخراج مشهد صناعي قصير محليًا؛ التسجيل الأصلي غير مستخدم…';
+  try{const result=await api('/api/tools/'+tool+'/demo',{});if(ticket!==previewSequence)return;if(!result.output||result.ownerContentUsed!==false)throw Error('Invalid local demo');const video=node('video');video.controls=true;video.preload='metadata';video.style.maxWidth='360px';video.style.width='100%';video.setAttribute('aria-label','معاينة مشهد الحركة المستقل');video.src='/api/tools/'+tool+'/demo-file?revision='+encodeURIComponent(result.outputSHA256);preview.append(node('p','مشهد متحرك مستقل · '+result.width+'×'+result.height+' · '+result.durationSeconds+' ثانية · غير مضاف لفيديوك.'),video);status.textContent='المشهد المحلي جاهز للمشاهدة. المشروع القابل للتعديل محفوظ مع ناتج التجربة.';
+  }catch{if(ticket===previewSequence)status.textContent='لم يكتمل إخراج المشهد المحلي؛ راجع حالة الأداة من الأدوات والإدارة.';}finally{control.disabled=false;}
+ };
+ document.addEventListener('click',()=>{if(projectID!==null&&(selected?.id!==projectID||transcriptReqSeq!==projectVersion)){results.replaceChildren();projectID=null;proposalID=null;cuts.disabled=true;status.textContent='اتغيّر المشروع أو التفريغ؛ حلّل النسخة الحالية من جديد.';}});
+})();
