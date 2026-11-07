@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>إنتاج عبود | الواجهة الإبداعية العالمية — Abood Production Studio V5 Ultra</title>
+  <meta name="description" content="استوديو عبود للمونتاج الذكي (RS-Dev V5 Ultra) بقيادة عبود حنون — محاكي الكشيدة العربية التفاعلي، مانع تصادم الكابشن، رادار الاحتفاظ بالمشاهدين، وسلسلة الإنتاج المتكاملة من 8 مراحل." />
+  <style>
+    :root {
+      --bg-deep: #050c12;
+      --bg-panel: rgba(11, 25, 36, 0.84);
+      --bg-card: rgba(15, 34, 48, 0.78);
+      --gold: #f5b942;
+      --gold-glow: rgba(245, 185, 66, 0.32);
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.28);
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --text: #f4f8fb;
+      --muted: #94aebf;
+      --border: rgba(255, 255, 255, 0.11);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Cairo', 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(245, 185, 66, 0.13), transparent 36%),
+        radial-gradient(circle at 82% 18%, rgba(56, 189, 248, 0.14), transparent 40%),
+        linear-gradient(180deg, #040a0f 0%, #081520 52%, #050c12 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Top Navigation */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 12, 18, 0.85);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand-orb {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), #e07b18);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #061017;
+      box-shadow: 0 0 20px var(--gold-glow);
+      font-size: 18px;
+    }
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+    .brand-text span {
+      font-size: 12px;
+      color: var(--gold);
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-btn {
+      padding: 8px 15px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+    .nav-btn:hover {
+      border-color: var(--cyan);
+      background: rgba(56, 189, 248, 0.12);
+      transform: translateY(-1px);
+    }
+    .nav-btn.gold {
+      background: linear-gradient(135deg, var(--gold), #e5931c);
+      color: #071219;
+      border-color: transparent;
+      box-shadow: 0 6px 20px var(--gold-glow);
+    }
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+    /* Hero Banner */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      padding: 32px;
+      border-radius: 26px;
+      background: var(--bg-panel);
+      border: 1px solid rgba(245, 185, 66, 0.26);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+      margin-bottom: 28px;
+      align-items: center;
+    }
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(245, 185, 66, 0.14);
+      border: 1px solid rgba(245, 185, 66, 0.4);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      line-height: 1.25;
+      margin: 0 0 14px;
+      background: linear-gradient(95deg, #ffffff 0%, #f5b942 60%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    @media (max-width: 640px) {
+      .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    .kpi {
+      background: rgba(5, 14, 21, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+    }
+    .kpi strong {
+      display: block;
+      font-size: 22px;
+      color: var(--gold);
+    }
+    .kpi span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    /* Interactive Simulator Grid */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 980px) {
+      .studio-grid { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .panel-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #fff;
+    }
+    .control-group {
+      margin-bottom: 16px;
+    }
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .input-text, .select-box {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 12px;
+      background: rgba(4, 11, 17, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+    }
+    .range-slider {
+      width: 100%;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+    .toggle-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .toggle-chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      user-select: none;
+    }
+    .toggle-chip.active {
+      border-color: var(--gold);
+      background: rgba(245, 185, 66, 0.14);
+      color: var(--gold);
+    }
+    /* Live Phone / Cinema Preview Frame */
+    .stage-viewport-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .stage-viewport {
+      position: relative;
+      width: 320px;
+      height: 568px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 35%, #1d3c4f 0%, #07131c 75%);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stage-viewport.landscape {
+      width: 100%;
+      max-width: 400px;
+      height: 225px;
+      border-radius: 18px;
+    }
+    .stage-viewport.grade-film {
+      filter: contrast(1.08) saturate(1.18) sepia(0.08);
+    }
+    .stage-viewport.grade-clean {
+      filter: contrast(1.04) brightness(1.05) saturate(1.06);
+    }
+    /* Simulated Neon Frame Overlay */
+    .sim-neon-frame {
+      position: absolute;
+      inset: 10px;
+      border-radius: 20px;
+      border: 2px solid rgba(245, 185, 66, 0.78);
+      box-shadow:
+        0 0 18px rgba(245, 185, 66, 0.45),
+        inset 0 0 18px rgba(56, 189, 248, 0.28);
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    /* Simulated Statement Card with Collision Guard */
+    .sim-statement-card {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 8%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(8, 17, 26, 0.82);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(245, 185, 66, 0.52);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+      transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+      z-index: 4;
+    }
+    .sim-statement-card.collision-off {
+      top: 66%;
+      border-color: var(--rose);
+      background: rgba(120, 18, 36, 0.78);
+    }
+    .sim-kicker {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .sim-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+    /* Simulated Presenter Avatar Silhouette */
+    .sim-presenter {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+    .sim-avatar-circle {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(56, 189, 248, 0.25), rgba(245, 185, 66, 0.22));
+      border: 2px solid rgba(255, 255, 255, 0.22);
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      box-shadow: 0 0 36px rgba(56, 189, 248, 0.25);
+    }
+    /* Simulated Audio Pulse Bars */
+    .sim-audio-pulse {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 22%;
+      height: 34px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 4px;
+      z-index: 3;
+      transition: opacity 0.25s ease;
+    }
+    .pulse-bar {
+      width: 5px;
+      border-radius: 99px;
+      background: linear-gradient(180deg, var(--gold), var(--cyan));
+      height: 12px;
+      transition: height 0.12s ease;
+    }
+    /* Simulated Lower Safe-Zone Spoken Caption */
+    .sim-caption-box {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 7%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(4, 10, 15, 0.88);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      text-align: center;
+      z-index: 5;
+    }
+    .sim-caption-ar {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+    .sim-caption-ar .active-word {
+      color: #061018;
+      background: var(--gold);
+      padding: 1px 6px;
+      border-radius: 6px;
+    }
+    .sim-caption-en {
+      font-size: 11px;
+      color: var(--cyan);
+      direction: ltr;
+    }
+    /* Niche Playbook & Radar Cards */
+    .playbook-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .playbook-card {
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .playbook-card.active, .playbook-card:hover {
+      border-color: var(--gold);
+      background: rgba(245, 185, 66, 0.11);
+      transform: translateY(-2px);
+    }
+    .playbook-card h4 {
+      margin: 0 0 6px;
+      color: var(--gold);
+      font-size: 15px;
+    }
+    .playbook-card p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    /* 8 Stages Pipeline Grid */
+    .stages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .stage-card {
+      padding: 16px;
+      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      position: relative;
+    }
+    .stage-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(16, 185, 129, 0.16);
+      color: var(--emerald);
+      margin-bottom: 8px;
+    }
+    .stage-card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      color: #fff;
+    }
+    .stage-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .status-toast {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #a7f3d0;
+      font-size: 13px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/showcase">
+      <div class="brand-orb">ع</div>
+      <div class="brand-text">
+        <strong>استوديو عبود للمونتاج الذكي · Abood Studio V5 Ultra</strong>
+        <span>بقيادة المؤسس عبود حنون (Abdel Rahman Hannoun)</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a class="nav-btn gold" href="/media-review">🎬 غرفة المخرج والمونتاج (Stage 1–8)</a>
+      <a class="nav-btn" href="/">🏠 المشاريع والرفع</a>
+      <a class="nav-btn" href="/audio-review">🎙️ هندسة وتنقية الصوت</a>
+      <a class="nav-btn" href="/admin">⚙️ مركز الـ 21 أداة والفلاشة</a>
+      <a class="nav-btn" href="/reports/development">📊 التقرير الشامل</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div>
+        <span class="pill">✨ الإصدار الخامس V5 Ultra · تقييم المخرج الاحترافي 100/100 (A+)</span>
+        <h1>أول محرك مونتاج ذكي يجمع الكشيدة العربية الحركية، مانع التصادم، ورادار الاحتفاظ بالمشاهدين</h1>
+        <p>
+          صُمّم <strong>Abood Production Studio</strong> ليكون المنصة الإبداعية المتكاملة لصنّاع المحتوى بالعربية والإنجليزية: تفريغ صوتي محلي عبر Whisper، لوحة قصة من 5 مشاهد تحمي كلام المتحدث 100%، مطّ كشيدة عربي ذكي، فصل تلقائي بين العناوين والكابشن، وتصدير فوري لإنستغرام وتيك توك وشورتس.
+        </p>
+        <div class="nav-links">
+          <a class="nav-btn gold" href="/media-review?project=app-1793272332186-8ec6b9">🚀 افتح المشروع الحقيقي المعتمد (8/8 مراحل)</a>
+          <a class="nav-btn" href="/media-review?project=app-1793308175604-76d4aa">📱 افتح مشروع الريلز العمودي 9:16 (100/100 A+)</a>
+          <button type="button" class="nav-btn" id="openLiveStage5Btn">🎞️ فتح محرر Remotion المباشر (Stage 5)</button>
+        </div>
+        <div id="liveActionToast" class="status-toast"></div>
+      </div>
+
+      <div>
+        <div class="kpi-strip">
+          <div class="kpi">
+            <strong id="kpiScore">100/100</strong>
+            <span>درجة المخرج الذكي (A+)</span>
+          </div>
+          <div class="kpi">
+            <strong>8 / 8</strong>
+            <span>مراحل إنتاج مكتملة</span>
+          </div>
+          <div class="kpi">
+            <strong>53 / 53</strong>
+            <span>اختبار تكاملي ناجح</span>
+          </div>
+          <div class="kpi">
+            <strong>0%</strong>
+            <span>تداخل كابشن وعناوين</span>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding:16px;border-radius:18px;background:rgba(4,12,18,0.82);border:1px solid var(--border);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <strong style="font-size:14px;color:var(--gold);">📈 منحنى الاحتفاظ بالمشاهدين (Retention Drop Radar)</strong>
+            <span style="font-size:12px;color:var(--emerald);">مؤمّن ضد الهبوط · 6 نقاط تنشيط بصري</span>
+          </div>
+          <svg viewBox="0 0 400 95" style="width:100%;height:88px;overflow:visible;">
+            <defs>
+              <linearGradient id="retGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f5b942" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
+            <path id="radarAreaPath" d="M0,18 Q65,14 130,22 T260,19 T400,24 L400,90 L0,90 Z" fill="url(#retGrad)"/>
+            <path id="radarLinePath" d="M0,18 Q65,14 130,22 T260,19 T400,24" fill="none" stroke="#f5b942" stroke-width="3"/>
+            <circle cx="15" cy="18" r="5" fill="#10b981"/>
+            <circle cx="95" cy="17" r="5" fill="#38bdf8"/>
+            <circle cx="185" cy="21" r="5" fill="#f5b942"/>
+            <circle cx="285" cy="19" r="5" fill="#38bdf8"/>
+            <circle cx="380" cy="23" r="5" fill="#10b981"/>
+          </svg>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);">
+            <span>00:00 Hook خاطف</span>
+            <span>00:10 Context</span>
+            <span>00:22 Point + Zoom</span>
+            <span>00:32 Proof</span>
+            <span>00:42 CTA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Arabic Kashida & Collision-Guard Studio Simulator -->
+    <section class="studio-grid">
+      <div class="panel">
+        <div class="panel-header">
+          <h2>🎨 مختبر الكشيدة العربية الحركية ومانع التصادم التفاعلي (Live Stage 5 Lab)</h2>
+          <span style="font-size:12px;color:var(--cyan);">جرّب التعديل الفوري قبل الرندر</span>
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span>النص الإخراجي لبطاقة العنوان (Statement Title)</span>
+            <span id="kashidaCountBadge" style="color:var(--gold);">كشيدة نشطة: +4 مدّات</span>
+          </label>
+          <input id="simTitleInput" class="input-text" type="text" value="أول لغة تعلّمت أحكيها هي اللغة العربية" />
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span>مستوى مطّ الكشيدة العربي (Arabic Kashida Stretch)</span>
+            <span id="simKashidaValue">4 مدّات في الكلمة</span>
+          </label>
+          <input id="simKashidaRange" class="range-slider" type="range" min="0" max="6" value="4" />
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span>قالب المخرج الاحترافي (Niche Director Playbook)</span>
+            <span id="activePlaybookLabel" style="color:var(--emerald);">قصة بودكاست ومقابلة</span>
+          </label>
+          <div class="playbook-bar" id="playbookSelector">
+            <div class="playbook-card active" data-playbook="podcast-story" data-kicker="قصة بودكاست · المشهد ٣" data-title="أول لغة تعلّمت أحكيها هي اللغة العربية" data-grade="film">
+              <h4>🎙️ قصة بودكاست ومقابلة</h4>
+              <p>كشيدة دافئة + فلتر سينمائي Film + حماية 100% لكلام الضيف.</p>
+            </div>
+            <div class="playbook-card" data-playbook="tech-edu" data-kicker="شرح تقني · علوم الحاسوب" data-title="درست علوم الكومبيوتر بجامعة يو تي دالاس" data-grade="clean">
+              <h4>💻 تعليم تقني وشرح</h4>
+              <p>فلتر Clean حاد + بطاقات إحصائيات وأرقام + تركيز كاميرا ذكي.</p>
+            </div>
+            <div class="playbook-card" data-playbook="fast-reel" data-kicker="ريلز خاطف · Hook" data-title="مرحبًا! اسمي دايفيد سامر عرنوق" data-grade="film">
+              <h4>⚡ ريلز سريع وعالي الطاقة</h4>
+              <p>إيقاع سريع + إطار نيون مزدوج + نبضات صوتية تفاعلية نشطة.</p>
+            </div>
+            <div class="playbook-card" data-playbook="luxury-brand" data-kicker="هوية فاخرة · جذور الشام" data-title="عندي أخ واحد أصغر مني وأهلي أصلهن من الشام" data-grade="film">
+              <h4>👑 هوية فاخرة وعلامة تجارية</h4>
+              <p>بطاقات زجاجية ذهبية + مطّ كشيدة كلاسيكي متزن + تلاشي صوتي ناعم.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="toggle-grid">
+          <div class="toggle-chip active" id="toggleCollisionGuard">
+            <span>🛡️ مانع تصادم الكابشن (Collision Guard)</span>
+            <strong>مفعّل (أعلى 8%)</strong>
+          </div>
+          <div class="toggle-chip active" id="toggleNeonFrame">
+            <span>✨ إطار النيون المزدوج (Neon Frame)</span>
+            <strong>مفعّل</strong>
+          </div>
+          <div class="toggle-chip active" id="toggleAudioPulse">
+            <span>📊 نبض الصوت التفاعلي (Audio Pulse)</span>
+            <strong>مفعّل</strong>
+          </div>
+          <div class="toggle-chip active" id="toggleAspect">
+            <span>📐 مقاس الكادر (Aspect Ratio)</span>
+            <strong id="aspectLabel">عمودي 9:16</strong>
+          </div>
+          <div class="toggle-chip active" id="toggleCartoonAvatar">
+            <span>🎭 الكرتون الناطق (Speaking Cartoon)</span>
+            <strong>مفعّل (Lip-Sync)</strong>
+          </div>
+          <div class="toggle-chip active" id="RecordVoiceSimChip">
+            <span>🎙️ مايكروفون الفويس (Voice Input)</span>
+            <strong id="micStatusLabel">جاهز للتسجيل</strong>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
+          <button type="button" class="nav-btn gold" id="applyPlaybookLiveBtn">⚡ تطبيق القالب + الكرتون الناطق فعليًا</button>
+          <button type="button" class="nav-btn" id="recordVoiceToCartoonBtn" style="border-color:var(--gold);color:var(--gold);">🎙️ سجّل صوتك وحوّله لفيديو كرتون</button>
+          <a class="nav-btn" href="/media-review?project=app-1793272332186-8ec6b9">🔍 فتح لوحة التحكم الكاملة للمشروع</a>
+        </div>
+      </div>
+
+      <!-- Live Animated Canvas Preview -->
+      <div class="panel stage-viewport-wrap">
+        <div style="width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <strong style="font-size:14px;color:var(--gold);">معاينة الكادر الحية (60fps Live Sim)</strong>
+          <span id="collisionStatusBadge" style="font-size:12px;color:var(--emerald);font-weight:800;">✅ صفر تداخل (آمن 100%)</span>
+        </div>
+
+        <div class="stage-viewport grade-film" id="simViewport">
+          <div class="sim-neon-frame" id="simNeonFrame"></div>
+
+          <div class="sim-statement-card" id="simStatementCard">
+            <div class="sim-kicker">
+              <span id="simKickerText">قصة بودكاست · المشهد ٣</span>
+              <span>KASHIDA ENGINE</span>
+            </div>
+            <div class="sim-title" id="simTitlePreview">أول لـــغـــة تـــعـــلّـــمـــت أحـــكـــيـــهـــا هـــي الـــلـــغـــة الـــعـــربـــيـــة</div>
+          </div>
+
+          <div class="sim-presenter" id="simCartoonAvatarWrap">
+            <svg viewBox="0 0 200 200" style="width:155px;height:155px;overflow:visible;filter:drop-shadow(0 12px 24px rgba(0,0,0,0.65));">
+              <circle id="simVoiceAura" cx="100" cy="102" r="72" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="2.5"/>
+              <path d="M42 186 C42 146, 158 146, 158 186 Z" fill="#1e3a5f" stroke="#f5b942" stroke-width="3"/>
+              <path d="M78 152 L100 176 L122 152" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+              <rect x="62" y="48" width="76" height="86" rx="34" fill="#f6c794" stroke="#142330" stroke-width="3"/>
+              <path d="M58 76 C58 38, 142 38, 142 76 C132 58, 68 58, 58 76 Z" fill="#172533"/>
+              <path d="M54 88 C52 34, 148 34, 146 88" fill="none" stroke="#f5b942" stroke-width="6" stroke-linecap="round"/>
+              <rect x="46" y="76" width="14" height="28" rx="7" fill="#38bdf8" stroke="#0b1722" stroke-width="2.5"/>
+              <rect x="140" y="76" width="14" height="28" rx="7" fill="#38bdf8" stroke="#0b1722" stroke-width="2.5"/>
+              <path d="M76 72 Q84 67 92 72" fill="none" stroke="#172533" stroke-width="3.5" stroke-linecap="round"/>
+              <path d="M108 72 Q116 67 124 72" fill="none" stroke="#172533" stroke-width="3.5" stroke-linecap="round"/>
+              <ellipse id="simEyeLeft" cx="84" cy="86" rx="6.5" ry="7" fill="#0f172a"/>
+              <ellipse id="simEyeRight" cx="116" cy="86" rx="6.5" ry="7" fill="#0f172a"/>
+              <circle cx="86" cy="84" r="2" fill="#fff"/>
+              <circle cx="118" cy="84" r="2" fill="#fff"/>
+              <ellipse id="simMouth" cx="100" cy="112" rx="11" ry="7" fill="#881337" stroke="#172533" stroke-width="2.5"/>
+              <path d="M48 98 Q68 124 88 122" fill="none" stroke="#94a3b8" stroke-width="3.5" stroke-linecap="round"/>
+              <rect x="84" y="116" width="12" height="9" rx="4.5" fill="#f5b942" stroke="#0f172a" stroke-width="2"/>
+            </svg>
+            <span id="simPersonaLabel" style="margin-top:8px;font-size:12px;color:var(--gold);font-weight:800;background:rgba(4,12,18,0.82);border:1px solid rgba(245,185,66,0.4);padding:4px 12px;border-radius:99px;">
+              🎭 عبود المخرج الذكي · Lip-Sync متزامن مع الصوت
+            </span>
+          </div>
+
+          <div class="sim-audio-pulse" id="simAudioPulse">
+            <div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div>
+            <div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div>
+            <div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div>
+            <div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div>
+          </div>
+
+          <div class="sim-caption-box">
+            <div class="sim-caption-ar">
+              أول <span class="active-word">لغة</span> اللي تعلّمت أحكيها هي اللغة العربية
+            </div>
+            <div class="sim-caption-en">
+              The first language I learned to speak is Arabic.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Arabic Motion Bank Catalog (12 Signature Arabic Motion Recipes) -->
+    <section class="panel" style="margin-bottom:28px;">
+      <div class="panel-header">
+        <h2>⚡ بنك الموشن قرافيكس العربي وإيقاع الصوت (Arabic Motion Skills & Beat-Sync Bank)</h2>
+        <span style="font-size:13px;color:var(--gold);font-weight:800;">12 وصفة حركة عربية وتزامن إيقاعي نشط</span>
+      </div>
+      <div class="playbook-bar">
+        <div class="playbook-card">
+          <h4>#1 مطّ الكشيدة الحركي (Kashida Stretch)</h4>
+          <p>تمدد الحروف العربية المتصلة بانسيابية مع نبض الكلمة المفتاحية (`arabic-kashida.ts`).</p>
+        </div>
+        <div class="playbook-card">
+          <h4>#2 مانع التصادم الذكي (Collision Guard)</h4>
+          <p>رفع بطاقة العنوان تلقائيًا إلى المنطقة الآمنة العليا (`top: 8%`) عند ظهور الكابشن.</p>
+        </div>
+        <div class="playbook-card">
+          <h4>#3 الكرتون الناطق (Voice-to-Cartoon Lip-Sync)</h4>
+          <p>شخصية كرتونية ناطقة تتزامن حركة فمها وعيونها ويدها مع بصمة الصوت (`cartoon-avatar`).</p>
+        </div>
+        <div class="playbook-card">
+          <h4>#4 تزامن دقات الصوت (Rhythm Beat-Sync)</h4>
+          <p>كشف تلقائي لبدايات الجمل ونبضات الصوت (`detectRhythmBeatPeaks`) لمزامنة الانتقالات والمؤثرات.</p>
+        </div>
+        <div class="playbook-card">
+          <h4>#5 إطار النيون المزدوج (Neon Frame)</h4>
+          <p>إطار سينمائي متوهج يحيط بالكادر باللونين الذهبي والسماوي (`neon-frame`).</p>
+        </div>
+        <div class="playbook-card">
+          <h4>#6 موجات الصوت التفاعلية (Audio Pulse)</h4>
+          <p>أعمدة طيف صوتي حية تتحرك مع ترددات صوت المتحدث في الوقت الفعلي (`audio-pulse`).</p>
+        </div>
+        <div class="playbook-card">
+          <h4>#7 عداد الأرقام المتصاعد (Metric Count)</h4>
+          <p>تحريك الأرقام والنسب المئوية والسنوات تصاعديًا في مشاهد الإثبات (`metric-count`).</p>
+        </div>
+        <div class="playbook-card">
+          <h4>#8 تركيز الكاميرا الذكي (Source Focus Zoom)</h4>
+          <p>تقريب تدريجي ناعم (`7%–15% Zoom`) على الجمل الحاسمة لكسر الجمود البصري.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8-Stage Master Pipeline Overview -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>🏆 سلسلة الإنتاج الذكية ذات الـ 8 مراحل (مكتملة 8/8 بنسبة 100%)</h2>
+        <span style="font-size:13px;color:var(--emerald);font-weight:800;">جميع المراحل موثقة ومختبرة على المصدر الحقيقي</span>
+      </div>
+      <div class="stages-grid">
+        <div class="stage-card">
+          <span class="stage-badge">المرحلة 1 · مكتملة</span>
+          <h3>١. الموجز الصوتي والمرجعي</h3>
+          <p>استخراج بصمة المصدر، أسئلة الموجز الموجه، وتسجيل الفكرة بالصوت محليًا مع توثيق الحقوق (`analysis-brief.json`).</p>
+        </div>
+        <div class="stage-card">
+          <span class="stage-badge">المرحلة 2 · مكتملة</span>
+          <h3>٢. تفريغ Whisper والمراجعة البشرية</h3>
+          <p>تفريغ محلي دقيق للكلمات والتوقيت مع اعتماد بشري موثق لـ 11 جملة و5 حدود مشاهد دون اختراع حرف واحد.</p>
+        </div>
+        <div class="stage-card">
+          <span class="stage-badge">المرحلة 3 · مكتملة</span>
+          <h3>٣. المخرج الذكي ولوحة القصة</h3>
+          <p>بناء 5 مشاهد (`Hook → Context → Point → Proof → CTA`) مع فحص المخرج الآلي وتعديل المشهد الموضعي (`Point-Edit`).</p>
+        </div>
+        <div class="stage-card">
+          <span class="stage-badge">المرحلة 4 · مكتملة</span>
+          <h3>٤. التايملاين متعدد المسارات</h3>
+          <p>تحويل القصة إلى التايملاين مع وصفات الحركة (`metric-count` و`source-focus`) والقص والتبطيء وUndo/Redo.</p>
+        </div>
+        <div class="stage-card">
+          <span class="stage-badge">المرحلة 5 · مكتملة V5 Ultra</span>
+          <h3>٥. الكشيدة العربية ومانع التصادم</h3>
+          <p>محرك مطّ الكشيدة العربي، فصل بطاقة العنوان العلوية عن الكابشن السفلي، إطار النيون، وموجات الصوت التفاعلية.</p>
+        </div>
+        <div class="stage-card">
+          <span class="stage-badge">المرحلة 6 · مكتملة</span>
+          <h3>٦. الترجمة الثنائية وتنقية الصوت</h3>
+          <p>ترجمة إنجليزية متزامنة (`caption-translation.json`) وتنقية الصوت محليًا عبر DeepFilterNet مع مقارنة فورية.</p>
+        </div>
+        <div class="stage-card">
+          <span class="stage-badge">المرحلة 7 · مكتملة</span>
+          <h3>٧. الرندر المعتمد وفحص الجودة QC</h3>
+          <p>رندر فعلي عبر Remotion + FFmpeg مع استخراج لقطات الفحص البصري (`frame-030` و`frame-135`) والتحقق من المسارات.</p>
+        </div>
+        <div class="stage-card">
+          <span class="stage-badge">المرحلة 8 · مكتملة</span>
+          <h3>٨. حزمة النشر الذكية والدومين</h3>
+          <p>توليد `PUBLISH_PACK.md` لمنصات إنستغرام وتيك توك وشورتس مع فحص `caption-check` وبوابة الدومين الموحدة.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/abood-world-class-showcase.js"></script>
+</body>
+</html>

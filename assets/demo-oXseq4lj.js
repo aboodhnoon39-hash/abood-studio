@@ -1,0 +1,1 @@
+import{j as r}from"./index-BRQTHy1c.js";import{F as t}from"./fresco-interview-template-Clb84pnC.js";import"./index-CzGW6FVa.js";import"./ScrollTrigger-DNECHiyU.js";function p(){return r.jsx(t,{})}export{p as default};
